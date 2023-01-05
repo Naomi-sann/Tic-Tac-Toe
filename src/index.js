@@ -1,2 +1,4 @@
-console.log("hello webpack");
-console.log(process.env.HELLO_DOTENV);
+import "./styles/main.scss";
+import App from "./App";
+
+App();
