@@ -12,8 +12,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: $primaryFont;
 }
 
 #container {
@@ -40,7 +39,50 @@ body {
 }
 
 .square {
-  background-color: $darkGray;
+  background-color: $gray;
   border-radius: 15px;
   cursor: pointer;
+}
+
+#points-section {
+  @include flexbox(row, space-between, center);
+  margin-bottom: 30px;
+}
+
+.x-points,
+.o-points {
+  width: calc(50% - 10px);
+  height: 75px;
+  padding: 10px 20px;
+  @include flexbox(row, space-between, center);
+  @include box;
+  position: relative;
+}
+
+.x-icon {
+  @include x-icon($weight: 9px);
+  user-select: none;
+}
+.o-icon {
+  @include o-icon($weight: 11px);
+}
+
+.o-icon.small-icon {
+  transform: scale(0.9);
+}
+
+.seperator {
+  width: 4px;
+  height: 50px;
+  background: $highGray;
+  border-radius: 10px;
+  position: absolute;
+  left: 45%;
+}
+
+#x-point,
+#o-point {
+  font-size: 45px;
+  font-weight: 900;
+  color: $darkGray;
 }
