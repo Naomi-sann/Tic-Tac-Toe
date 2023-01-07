@@ -1,3 +1,5 @@
+@import "./variables";
+
 @mixin flexbox($dir: row, $justify: center, $align: center) {
   display: flex;
   flex-direction: $dir;
@@ -5,4 +7,48 @@
   align-items: $align;
 
   @content;
+}
+
+@mixin box() {
+  border-bottom: 5px solid $gray;
+  border-radius: 1.5rem;
+  outline: 3px solid $black;
+  background-color: $lightGray;
+
+  @content;
+}
+
+@mixin x-icon($width: 50px, $height: 50%, $weight: 10px, $color: $darkGray) {
+  width: $width;
+  height: $width;
+  position: relative;
+
+  &::before,
+  &::after {
+    --transform-translate: translate(-50%, -50%);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $weight;
+    height: 100%;
+    background: $color;
+    transform-origin: center;
+    border-radius: 3px;
+  }
+
+  &::before {
+    transform: var(--transform-translate) rotate(-45deg);
+  }
+
+  &::after {
+    transform: var(--transform-translate) rotate(45deg);
+  }
+}
+
+@mixin o-icon($width: 50px, $height: 50px, $weight: 10px, $color: $darkGray) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  border: $weight solid $color;
 }
