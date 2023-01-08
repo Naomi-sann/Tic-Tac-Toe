@@ -2,6 +2,14 @@ const Game = {
   xPoints: 0,
   oPoints: 0,
   boardSquares: Array(9).fill(null),
+  player: {
+    mark: null,
+    isPending: null,
+  },
+  enemy: {
+    mark: null,
+    isPending: null,
+  },
   fillSquare(mark, index) {
     if (
       (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") &&

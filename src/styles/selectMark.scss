@@ -1,0 +1,67 @@
+.select-mark-section {
+  width: clamp(180px, 90%, 375px);
+  height: 90px;
+  @include box();
+  @include flexbox;
+  padding: 7.5px;
+  margin: auto;
+  position: relative;
+
+  & button {
+    width: 50%;
+    height: 100%;
+    background: none;
+    @include flexbox;
+    cursor: pointer;
+    z-index: 1;
+
+    & > div {
+      width: 45px;
+      height: 45px;
+      z-index: 1;
+    }
+
+    &:first-child {
+      border-radius: 1.25rem 0 0 1.25rem;
+    }
+    &:last-child {
+      border-radius: 0 1.25rem 1.25rem 0;
+    }
+  }
+}
+
+#start-game-btn {
+  @include box;
+  display: block;
+  width: clamp(180px, 90%, 375px);
+  height: 65px;
+  font-size: 25px;
+  font-family: $primaryFont;
+  font-weight: 900;
+  color: #313131;
+  margin: 30px auto;
+  cursor: pointer;
+
+  &:active {
+    border: none;
+    transform: translateY(5px);
+    box-shadow: 0 2px 0 3px #717171;
+  }
+}
+
+.mark-selector {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  opacity: 0;
+  background: $mediumGray;
+  border-radius: 1.25rem;
+  left: 7.5px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.active {
+    transition: all 0.3s ease;
+    opacity: 1;
+  }
+}
