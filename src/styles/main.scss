@@ -1,5 +1,7 @@
 @import "./variables";
 @import "./mixins";
+@import "./selectMark.scss";
+@import "./game.scss";
 
 *,
 *::before,
@@ -21,68 +23,6 @@ body {
   @include flexbox;
 }
 
-#board {
-  width: 90vw;
-  height: 90vw;
-  max-width: 400px;
-  max-height: 400px;
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  padding: 15px;
-  border-bottom: 5px solid $gray;
-  border-radius: 1.5rem;
-  outline: 3px solid $black;
-  background-color: $lightGray;
-}
-
-.square {
-  background-color: $gray;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-#points-section {
-  @include flexbox(row, space-between, center);
-  margin-bottom: 30px;
-}
-
-.x-points,
-.o-points {
-  width: calc(50% - 10px);
-  height: 75px;
-  padding: 10px 20px;
-  @include flexbox(row, space-between, center);
-  @include box;
-  position: relative;
-}
-
-.x-icon {
-  @include x-icon($weight: 9px);
-  user-select: none;
-}
-.o-icon {
-  @include o-icon($weight: 11px);
-}
-
-.o-icon.small-icon {
-  transform: scale(0.9);
-}
-
-.seperator {
-  width: 4px;
-  height: 50px;
-  background: $highGray;
-  border-radius: 10px;
-  position: absolute;
-  left: 45%;
-}
-
-#x-point,
-#o-point {
-  font-size: 45px;
-  font-weight: 900;
-  color: $darkGray;
+#game-container {
+  width: clamp(180px, 90%, 400px);
 }
