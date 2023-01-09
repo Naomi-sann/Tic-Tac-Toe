@@ -46,8 +46,14 @@ startGameButton.addEventListener("click", () => {
   if (playerMark) {
     Game.player.mark = playerMark;
 
-    if (playerMark === "x") Game.enemy.mark = "o";
-    if (playerMark === "o") Game.enemy.mark = "x";
+    if (playerMark === "x") {
+      Game.enemy.mark = "o";
+      Game.turn = "player";
+    }
+    if (playerMark === "o") {
+      Game.enemy.mark = "x";
+      Game.turn = "enemy";
+    }
 
     App();
   }

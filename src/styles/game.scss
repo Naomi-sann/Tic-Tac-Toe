@@ -19,6 +19,12 @@
   background-color: $gray;
   border-radius: 15px;
   cursor: pointer;
+  @include flexbox;
+
+  & .x-icon,
+  & .o-icon {
+    transform: scale(1.4);
+  }
 }
 
 #points-section {
