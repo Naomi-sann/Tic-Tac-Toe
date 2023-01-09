@@ -1,7 +1,7 @@
 const Game = {
+  boardSquares: Array(9).fill(null),
   xPoints: 0,
   oPoints: 0,
-  boardSquares: Array(9).fill(null),
   player: {
     mark: null,
     isPending: null,
@@ -10,11 +10,12 @@ const Game = {
     mark: null,
     isPending: null,
   },
+  turn: null,
   fillSquare(mark, index) {
     if (
       (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") &&
       index >= 0 &&
-      index < 8
+      index < 9
     )
       this.boardSquares[index] = mark;
   },
