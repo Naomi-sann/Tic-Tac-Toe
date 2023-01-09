@@ -31,8 +31,6 @@ function App() {
   loadBoard();
   laodSquares();
 
-  console.log(Game);
-
   if (Game.turn === "player") {
     playerChoose();
   } else if (Game.turn === "enemy") {

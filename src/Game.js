@@ -20,18 +20,30 @@ const Game = {
       this.boardSquares[index] = mark;
   },
   addPoint(mark) {
+    const xPoints = document.getElementById("x-point"),
+      oPoints = document.getElementById("o-point");
+
     switch (mark.toLowerCase()) {
       case "x": {
         this.xPoints++;
+        xPoints.innerText = this.xPoints;
         break;
       }
       case "o": {
         this.oPoints++;
+        oPoints.innerText = this.oPoints;
         break;
       }
       default:
         console.error("Mark is not defined");
     }
+  },
+  endRound() {
+    const squares = document.querySelectorAll(".square");
+
+    squares.forEach((square) => (square.innerHTML = ""));
+
+    this.boardSquares = Array(9).fill(null);
   },
 };
 

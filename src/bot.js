@@ -1,6 +1,6 @@
 import Game from "./Game";
 import { playerChoose } from "./player";
-import { randomNumber } from "./utils";
+import { randomNumber, checkWinCondition } from "./utils";
 
 const bot = {
   botName: null,
@@ -28,6 +28,14 @@ const bot = {
         Game.enemy.isPending = false;
         Game.turn = "player";
         playerChoose();
+
+        const isWin = checkWinCondition();
+
+        if (isWin && isWin.win) {
+          console.log("win");
+          Game.endRound();
+          Game.addPoint(isWin.user);
+        }
       }, randomNumber(this.delay[0], this.delay[1]));
     }
   },
