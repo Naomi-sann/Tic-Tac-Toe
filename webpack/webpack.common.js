@@ -19,7 +19,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        use: ["cache-loader", "thread-loader", "babel-loader"],
+        use: ["thread-loader", "babel-loader"],
       },
       {
         test: /\.(scss|sass|css)$/,
