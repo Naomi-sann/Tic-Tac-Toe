@@ -13,6 +13,7 @@
   border-radius: 1.5rem;
   outline: 3px solid $black;
   background-color: $lightGray;
+  user-select: none;
 }
 
 .square {
@@ -23,7 +24,9 @@
 
   & .x-icon,
   & .o-icon {
-    transform: scale(1.4);
+    width: 50%;
+    height: 50%;
+    transform: scale(1.25);
   }
 }
 
@@ -40,6 +43,15 @@
   @include flexbox(row, space-between, center);
   @include box;
   position: relative;
+
+  & .x-icon {
+    width: clamp(30px, 10vw, 50px);
+    height: clamp(30px, 10vw, 50px);
+  }
+  & .o-icon {
+    width: clamp(30px, 10vw, 50px);
+    height: clamp(30px, 10vw, 50px);
+  }
 }
 
 .x-icon {

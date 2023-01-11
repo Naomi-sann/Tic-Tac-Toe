@@ -1,6 +1,6 @@
 import Game from "./Game";
 import { playerChoose } from "./player";
-import { randomNumber, checkWinCondition } from "./utils";
+import { randomNumber, checkWinCondition, checkSquaresFilled } from "./utils";
 
 const bot = {
   botName: null,
@@ -26,14 +26,20 @@ const bot = {
         ].innerHTML = `<div class="${botMark}-icon"></div>`;
         Game.fillSquare(botMark, emptySquares[randomIndex]);
         Game.enemy.isPending = false;
-        Game.turn = "player";
-        playerChoose();
+        Game.turn = null;
 
         const isWin = checkWinCondition();
 
         if (isWin && isWin.win) {
-          Game.endRound();
           Game.addPoint(isWin.user);
+          setTimeout(() => {
+            Game.endRound("enemy");
+          }, 1000);
+        } else {
+          if (!checkSquaresFilled("enemy")) {
+            Game.turn = "player";
+            playerChoose();
+          }
         }
       }, randomNumber(this.delay[0], this.delay[1]));
     }

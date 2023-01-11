@@ -1,3 +1,6 @@
+import bot from "./bot";
+import { playerChoose } from "./player";
+
 const Game = {
   boardSquares: Array(9).fill(null),
   xPoints: 0,
@@ -11,6 +14,13 @@ const Game = {
     isPending: null,
   },
   turn: null,
+  resetBoard() {
+    const squares = document.querySelectorAll(".square");
+
+    squares.forEach((square) => (square.innerHTML = ""));
+
+    this.boardSquares = Array(9).fill(null);
+  },
   fillSquare(mark, index) {
     if (
       (mark.toLowerCase() === "o" || mark.toLowerCase() === "x") &&
@@ -38,12 +48,23 @@ const Game = {
         console.error("Mark is not defined");
     }
   },
-  endRound() {
-    const squares = document.querySelectorAll(".square");
+  endRound(roundWinner) {
+    this.resetBoard();
 
-    squares.forEach((square) => (square.innerHTML = ""));
-
-    this.boardSquares = Array(9).fill(null);
+    switch (roundWinner) {
+      case "player": {
+        this.turn = "enemy";
+        bot.botChoose();
+        break;
+      }
+      case "enemy": {
+        this.turn = "player";
+        playerChoose();
+        break;
+      }
+      default:
+        console.error("Round winner identity's not given!");
+    }
   },
 };
 

@@ -1,6 +1,6 @@
 import Game from "./Game";
 import bot from "./bot";
-import { checkWinCondition } from "./utils";
+import { checkSquaresFilled, checkWinCondition } from "./utils";
 
 function playerChoose() {
   const squares = document.querySelectorAll(".square");
@@ -12,13 +12,19 @@ function playerChoose() {
         square.innerHTML = `<div class="${Game.player.mark}-icon"></div>`;
         Game.fillSquare(Game.player.mark, index);
         Game.player.isPending = false;
-        Game.turn = "enemy";
-        bot.botChoose();
+        Game.turn = null;
         const isWin = checkWinCondition();
 
         if (isWin && isWin.win) {
-          Game.endRound();
           Game.addPoint(isWin.user);
+          setTimeout(() => {
+            Game.endRound("player");
+          }, 1000);
+        } else {
+          if (!checkSquaresFilled("player")) {
+            Game.turn = "enemy";
+            bot.botChoose();
+          }
         }
       }
     });

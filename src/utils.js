@@ -1,4 +1,6 @@
+import bot from "./bot";
 import Game from "./Game";
+import { playerChoose } from "./player";
 
 const randomNumber = (min = 0, max = 1) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -31,4 +33,22 @@ const checkWinCondition = () => {
   }
 };
 
-export { randomNumber, checkWinCondition };
+const checkSquaresFilled = (finalSquareFiller) => {
+  const anyEmpty = Game.boardSquares.some((square) => !square);
+
+  const nextStarter = finalSquareFiller === "player" ? "enemy" : "player";
+
+  if (!anyEmpty) {
+    setTimeout(() => {
+      Game.resetBoard();
+      Game.turn = nextStarter;
+      nextStarter === "player"
+        ? playerChoose()
+        : nextStarter === "enemy" && bot.botChoose();
+    }, 1000);
+  } else {
+    return false;
+  }
+};
+
+export { randomNumber, checkWinCondition, checkSquaresFilled };
