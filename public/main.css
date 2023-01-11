@@ -1,0 +1,223 @@
+.select-mark-section {
+  width: clamp(180px, 90%, 375px);
+  height: 90px;
+  border-bottom: 5px solid #d9d9d9;
+  border-radius: 1.5rem;
+  outline: 3px solid #000;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px;
+  margin: auto;
+  position: relative;
+}
+.select-mark-section button {
+  width: 50%;
+  height: 100%;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.select-mark-section button > div {
+  width: 45px;
+  height: 45px;
+  z-index: 1;
+}
+.select-mark-section button:first-child {
+  border-radius: 1.25rem 0 0 1.25rem;
+}
+.select-mark-section button:last-child {
+  border-radius: 0 1.25rem 1.25rem 0;
+}
+
+#start-game-btn {
+  border-bottom: 5px solid #d9d9d9;
+  border-radius: 1.5rem;
+  outline: 3px solid #000;
+  background-color: #f1f1f1;
+  display: block;
+  width: clamp(180px, 90%, 375px);
+  height: 65px;
+  font-size: 25px;
+  font-family: "M PLUS Rounded 1c", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  color: #313131;
+  margin: 30px auto;
+  cursor: pointer;
+}
+#start-game-btn:active {
+  border: none;
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 3px #717171;
+}
+
+.mark-selector {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  opacity: 0;
+  background: #d1d1d1;
+  border-radius: 1.25rem;
+  left: 7.5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.mark-selector.active {
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+#board {
+  width: 90vw;
+  height: 90vw;
+  max-width: 400px;
+  max-height: 400px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 5px solid #d9d9d9;
+  border-radius: 1.5rem;
+  outline: 3px solid #000;
+  background-color: #f1f1f1;
+  user-select: none;
+}
+
+.square {
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.square .x-icon, .square .o-icon {
+  width: 50%;
+  height: 50%;
+  transform: scale(1.25);
+}
+
+#points-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.x-points,
+.o-points {
+  width: calc(50% - 10px);
+  height: 75px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 5px solid #d9d9d9;
+  border-radius: 1.5rem;
+  outline: 3px solid #000;
+  background-color: #f1f1f1;
+  position: relative;
+}
+.x-points .x-icon,
+.o-points .x-icon {
+  width: clamp(30px, 10vw, 50px);
+  height: clamp(30px, 10vw, 50px);
+}
+.x-points .o-icon,
+.o-points .o-icon {
+  width: clamp(30px, 10vw, 50px);
+  height: clamp(30px, 10vw, 50px);
+}
+
+.x-icon {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  user-select: none;
+}
+.x-icon::before, .x-icon::after {
+  --transform-translate: translate(-50%, -50%);
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 100%;
+  background: #616161;
+  transform-origin: center;
+  border-radius: 3px;
+}
+.x-icon::before {
+  transform: var(--transform-translate) rotate(-45deg);
+}
+.x-icon::after {
+  transform: var(--transform-translate) rotate(45deg);
+}
+
+.o-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 11px solid #616161;
+}
+
+.o-icon.small-icon {
+  transform: scale(0.9);
+}
+
+.seperator {
+  width: 4px;
+  height: 50px;
+  background: #919191;
+  border-radius: 10px;
+  position: absolute;
+  left: 45%;
+}
+
+#x-point,
+#o-point {
+  font-size: 45px;
+  font-weight: 900;
+  color: #616161;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "M PLUS Rounded 1c", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+  width: clamp(180px, 90%, 400px);
+}
+
+/*# sourceMappingURL=main.css.map */
